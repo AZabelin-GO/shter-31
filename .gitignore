@@ -1,3 +1,9 @@
+# HW sources
+ter-homeworks/
+
+# Packer
+*.pkrvars.hcl
+
 # Local .terraform directories
 .terraform/
 
