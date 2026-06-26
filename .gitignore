@@ -1,6 +1,10 @@
 # HW sources
 ter-homeworks/
 
+# Yandex CLoud
+yc/
+.sa-key*.json
+
 # Packer
 *.pkrvars.hcl
 
