@@ -1,0 +1,22 @@
+#cloud-config
+datasource:
+  Ec2:
+    strict_id: false
+ssh_pwauth: no
+
+users:
+  - name: ${admin_ssh_login}
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    ssh_authorized_keys:
+    %{ for admin_ssh_public_key in admin_ssh_public_keys }
+      - "${admin_ssh_public_key}"
+    %{ endfor }
+
+package_update: true
+package_upgrade: false
+
+packages:
+    %{ for os_package in os_packages }
+    - "${os_package}"
+    %{ endfor }

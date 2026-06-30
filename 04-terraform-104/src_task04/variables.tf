@@ -1,0 +1,29 @@
+# YC variables
+variable "api_token" {
+  type        = string
+  sensitive   = true
+  description = "OAuth token for YC"
+}
+
+variable "cloud_id" {
+  type        = string
+  sensitive   = false
+  description = "ID of the cloud in YC"
+}
+
+variable "folder_id" {
+  type        = string
+  sensitive   = false
+  description = "ID of the folder in YC"
+}
+
+variable "env_name" {
+  type        = string
+  sensitive   = false
+  default     = "dev"
+  description = "Name of the environment (used as prefix)"
+  validation {
+    condition     = contains(["dev", "staging", "production"], var.env_name)
+    error_message = "Must be one of: 'dev', 'staging', 'production'"
+  }
+}
